@@ -14,8 +14,8 @@ s3.listBuckets(function (err, data) {
     }
 });
 try {
-    let object = s3.getObject({ Bucket: 'maxys06-bucket-test', Key: 'bucket-file.txt' }).promise();
-    console.log(object);
+    let promiseResult = s3.getObject({ Bucket: 'maxys06-bucket-test', Key: 'bucket-file.txt' }).promise()
+        .then((value) => console.log("file: ", value)).catch((err) => console.log(err));
 }
 catch (err) {
     console.log(err);
